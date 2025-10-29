@@ -1,0 +1,323 @@
+@import 'variables';
+@import 'mixins';
+
+// Importar Bootstrap 5
+@import '~bootstrap/scss/bootstrap';
+
+// ========================================
+// ESTILOS GLOBAIS
+// ========================================
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: $bg-primary;
+  color: $text-primary;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.app-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+// Customização de scrollbar
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: $bg-primary;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $bg-secondary;
+  border-radius: $radius-md;
+
+  &:hover {
+    background: $primary-color;
+  }
+}
+
+// ========================================
+// PAGE STYLES
+// ========================================
+.page-header {
+  text-align: center;
+  padding: 2rem 0;
+  margin-bottom: 2rem;
+
+  @include respond-to(md) {
+    padding: 3rem 0;
+  }
+}
+
+.page-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  @include gradient-bg($primary-color, lighten($primary-color, 15%));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+
+  @include respond-to(md) {
+    font-size: 2.5rem;
+  }
+}
+
+.page-subtitle {
+  color: $text-secondary;
+  font-size: 1rem;
+  max-width: 600px;
+  margin: 0 auto;
+
+  @include respond-to(md) {
+    font-size: 1.1rem;
+  }
+}
+
+// ========================================
+// HOME PAGE
+// ========================================
+.hero-section {
+  padding: 3rem 0;
+  background: linear-gradient(135deg, $bg-secondary 0%, $bg-primary 100%);
+
+  @include respond-to(md) {
+    padding: 5rem 0;
+  }
+
+  .hero-title {
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+
+    @include respond-to(md) {
+      font-size: 3rem;
+    }
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+    color: $text-secondary;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+
+    @include respond-to(md) {
+      font-size: 1.2rem;
+    }
+  }
+
+  .hero-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .hero-image {
+    @include flex-center;
+    height: 300px;
+
+    @include respond-to(md) {
+      height: 400px;
+    }
+
+    .anime-icon {
+      font-size: 10rem;
+      animation: float 3s ease-in-out infinite;
+
+      @include respond-to(md) {
+        font-size: 15rem;
+      }
+    }
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.seasonal-section {
+  padding: 3rem 0;
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .section-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+
+    @include respond-to(md) {
+      font-size: 2rem;
+    }
+  }
+
+  .section-subtitle {
+    color: $text-secondary;
+    font-size: 1rem;
+  }
+}
+
+.features-section {
+  padding: 3rem 0;
+  background: $bg-secondary;
+  margin-top: 3rem;
+
+  .feature-card {
+    text-align: center;
+    padding: 2rem 1rem;
+    background: $bg-card;
+    border-radius: $radius-lg;
+    height: 100%;
+    transition: transform $transition-normal;
+
+    &:hover {
+      transform: translateY(-5px);
+    }
+  }
+
+  .feature-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+
+  .feature-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+  }
+
+  .feature-text {
+    color: $text-secondary;
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+}
+
+// ========================================
+// SEARCH PAGE
+// ========================================
+.search-container {
+  max-width: 800px;
+  margin: 0 auto 3rem;
+  padding: 0 1rem;
+}
+
+.search-form {
+  margin-bottom: 2rem;
+}
+
+.search-tips {
+  background: $bg-card;
+  padding: 1.5rem;
+  border-radius: $radius-lg;
+  border-left: 4px solid $primary-color;
+
+  ul {
+    margin: 0.5rem 0 0 1.5rem;
+    color: $text-secondary;
+
+    li {
+      margin-bottom: 0.25rem;
+    }
+  }
+}
+
+.results-header {
+  margin-bottom: 2rem;
+
+  .results-title {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .results-count {
+    color: $text-secondary;
+    font-size: 1rem;
+  }
+}
+
+// ========================================
+// PAGINATION
+// ========================================
+.pagination-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding: 2rem 0;
+
+  .page-indicator {
+    padding: 0.5rem 1rem;
+    background: $bg-card;
+    border-radius: $radius-md;
+    font-weight: 600;
+  }
+}
+
+// ========================================
+// EMPTY STATES
+// ========================================
+.empty-state {
+  padding: 3rem 1rem;
+  text-align: center;
+
+  .empty-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+  }
+
+  .empty-title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+}
+
+// ========================================
+// LOADING SPINNER
+// ========================================
+.spinner-border {
+  width: 3rem;
+  height: 3rem;
+}
+
+// ========================================
+// RESPONSIVE UTILITIES
+// ========================================
+@include respond-to(xs) {
+  .container {
+    padding: 0 1rem;
+  }
+
+  .btn-lg {
+    font-size: 1rem;
+    padding: 0.75rem 1.5rem;
+  }
+}

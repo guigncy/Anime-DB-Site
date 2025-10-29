@@ -1,25 +1,35 @@
-import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import './App.scss';
-
+import { useState, useEffect } from 'react';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import Home from './pages/Home';
-import TopAnimes from './pages/TopAnimes';
-import SearchAnime from './pages/SearchAnime';
+import HomePage from './pages/HomePage';
+import TopPage from './pages/TopPage';
+import SearchPage from './pages/SearchPage';
+import './App.scss';
 
-function App() {
+export default function App() {
+  const [route, setRoute] = useState('home');
+
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash.slice(1) || 'home';
+      setRoute(hash);
+    };
+
+    window.addEventListener('hashchange', handleHashChange);
+    handleHashChange();
+
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
+
   return (
-    <BrowserRouter>
+    <div className="app-container">
       <Header />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/top-animes" element={<TopAnimes />} />
-        <Route path="/search" element={<SearchAnime />} />
-      </Routes>
+      <main className="main-content">
+        {route === 'home' && <HomePage />}
+        {route === 'top' && <TopPage />}
+        {route === 'search' && <SearchPage />}
+      </main>
       <Footer />
-    </BrowserRouter>
+    </div>
   );
 }
-
-export default App;

@@ -25,7 +25,7 @@ export default function HomePage() {
 
   return (
     <div className="container my-5">
-      <h2 className="mb-4">Animes da Temporada Atual</h2>
+      <h2 className="mb-4">Animes em lançamento</h2>
       <div className="row">
         {animes.map(anime => (
           <AnimeCard key={anime.mal_id} anime={anime} />

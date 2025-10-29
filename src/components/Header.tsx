@@ -2,7 +2,7 @@ export default function Header() {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container">
-        <a className="navbar-brand" href="#home">Anime Finder</a>
+        <a className="navbar-brand" href="#home">Animes</a>
         <button 
           className="navbar-toggler" 
           type="button" 
@@ -14,7 +14,7 @@ export default function Header() {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav ms-auto">
             <li className="nav-item">
-              <a className="nav-link" href="#home">Início</a>
+              <a className="nav-link" href="#home">Home</a>
             </li>
             <li className="nav-item">
               <a className="nav-link" href="#top">Top Animes</a>
